@@ -15,7 +15,7 @@ int main(){
 	};
 	for (int i = 0; i < 2; i++){
 		
-		cout << "Ãäªø¬°" << len[i].len << "ªº¥¿¤è§Î­±¿n¡G" <<len[i].area() << endl;
+		cout << "é‚Šé•·ç‚º" << len[i].len << "çš„æ­£æ–¹å½¢é¢ç©ï¼š" <<len[i].area() << endl;
 	}
 	
 	
