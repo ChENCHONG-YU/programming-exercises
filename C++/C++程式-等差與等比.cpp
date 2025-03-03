@@ -10,17 +10,21 @@ int main()
     double d;
     double r;
     
+    //indexå€¼ 
+    int i,j;
+	
+	 
     cin >> n;
-    for(int i = 0; 0 < n; i++){
-        for(int j = 0; j < 4; j++){
+    for(i = 0; 0 < n; i++){
+        for(j = 0; j < 4; j++){
             cin >> sequence[j];
         }
-        //±ø¥ó²Å¦X¬°µ¥®t¡A±ø¥ó¤£²Å¦X¬°µ¥¤ñ
+        //æ¢ä»¶ç¬¦åˆç‚ºç­‰å·®ï¼Œæ¢ä»¶ä¸ç¬¦åˆç‚ºç­‰æ¯”
         if(sequence[1] - sequence[0] == sequence[2] - sequence[1]){
             d = sequence [1] - sequence[0];
             sequence[4] = sequence[3] + d;
             
-            for(int j = 0; j < 5; j++){
+            for(j = 0; j < 5; j++){
                 cout << sequence[j] << ' ';
             }
             cout << endl;
@@ -29,7 +33,7 @@ int main()
             r = sequence[1] / sequence[0];
             sequence[4] = sequence[3] * r;
             
-            for(int j = 0; j < 5; j++){
+            for(j = 0; j < 5; j++){
                 cout << sequence[j] << ' ';
             }
             cout << endl;
