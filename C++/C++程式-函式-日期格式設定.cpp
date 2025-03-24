@@ -20,7 +20,7 @@ void ShowDate(int year,int month, int day){
 int main()
 {
     int year,month,day;
-    cout << "請輸入年:";
+    cout << "請輸入年：";
     cin >> year;
     cout << "請輸入月：";
     cin >> month;
