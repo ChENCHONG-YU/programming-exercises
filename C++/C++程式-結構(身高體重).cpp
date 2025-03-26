@@ -7,9 +7,9 @@ typedef struct{
 } Person;
 
 void show(Person x){
-    cout << "©m¦W¡G" << x.name << endl;
-    cout << "¨­°ª¡G" << x.height << endl;
-    cout << "Åé­«¡G" << x.weight << endl;
+    cout << "åå­—ï¼š" << x.name << endl;
+    cout << "èº«é«˜" << x.height << endl;
+    cout << "é«”é‡" << x.weight << endl;
 }
 
 int main()
