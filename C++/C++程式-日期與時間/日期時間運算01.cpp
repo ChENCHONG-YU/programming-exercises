@@ -25,23 +25,23 @@ int main(){
 	cout << f << endl;
     */
     //----------------------------------------------------------------------------------
-   // struct tm t = {0};  //³o¼Ëªº¼gªk´N¬O¦pªG¤U­±¨S¦³µ¹©w­Èªì©l´Nµ¹0 
-    /*±q¨t²Î¤å¥ó¨Ó¬İ¡Astruct tmªºtm_year¬O±q1900¶}©l°_ºâ¡A¦p¤Uªí:
+   // struct tm t = {0};  //é€™æ¨£çš„å¯«æ³•å°±æ˜¯å¦‚æœä¸‹é¢æ²’æœ‰çµ¦å®šå€¼åˆå§‹å°±çµ¦0 
+    /*å¾ç³»çµ±æ–‡ä»¶ä¾†çœ‹ï¼Œstruct tmçš„tm_yearæ˜¯å¾1900é–‹å§‹èµ·ç®—ï¼Œå¦‚ä¸‹è¡¨:
 	 Mmeber  | Type |     Meaning           |  Range
 	 tm_min  | int  | minutes after the hour|  0 ~ 59
 	 tm_mday | int  | day of the month      |  0 ~ 23 
 	 tm_mon  | int  | months since January  |  0 ~ 11
 	 tm_year | int  | years since 1900      |
 	 
-	 ©Ò¥H³oÃä¦A«ü¬£­Èªº®É­Ô³Ì¦n§â¦~´î±¼1900¡A¤ë´î±¼1 
+	 æ‰€ä»¥é€™é‚Šå†æŒ‡æ´¾å€¼çš„æ™‚å€™æœ€å¥½æŠŠå¹´æ¸›æ‰1900ï¼Œæœˆæ¸›æ‰1 
     */
     /*
     t.tm_year = 2025 - 1900;
     t.tm_mon = 4 - 1;
     t.tm_mday = 8;
-    //¨ú­È®É¸Ó¥[ªº´N§â¥L¥[¦^¨Ó 
+    //å–å€¼æ™‚è©²åŠ çš„å°±æŠŠä»–åŠ å›ä¾† 
     cout << t.tm_year + 1900<< "/" << t.tm_mon + 1<< "/" << t.tm_mday << endl;  
-    //¥H¤Wªº³o¼Ë°µªk¥i¥HÁ×§Ktm¥áµ¹¥ô¦ó¤@­Ó¨ç¦¡§@¹Bºâ®Éµo¥Í¿ù»~ 
+    //ä»¥ä¸Šçš„é€™æ¨£åšæ³•å¯ä»¥é¿å…tmä¸Ÿçµ¦ä»»ä½•ä¸€å€‹å‡½å¼ä½œé‹ç®—æ™‚ç™¼ç”ŸéŒ¯èª¤ 
 	*/
 	//----------------------------------------------------------------------------------
 	/*
@@ -50,8 +50,8 @@ int main(){
     cout << pt -> tm_year + 1900<< "/" << pt -> tm_mon + 1<< "/" << pt -> tm_mday << endl;
 	
 	char * result = new char[30];
-	strftime(result , 30, "Now is ¡G %Y/%m/%d %H:%M:%S", pt);
-	cout << result << endl;   //Now is ¡G 2025/04/08 16:29:35 (·í¤Ñªº¤é´Á»P®É¶¡) 
+	strftime(result , 30, "Now is ï¼š %Y/%m/%d %H:%M:%S", pt);
+	cout << result << endl;   //Now is ï¼š 2025/04/08 16:29:35 (ç•¶å¤©çš„æ—¥æœŸèˆ‡æ™‚é–“) 
     */
     //----------------------------------------------------------------------------------
     /* 
@@ -59,25 +59,25 @@ int main(){
     startDate.tm_year = 2025 - 1900;
     startDate.tm_mon = 4 - 1;
     startDate.tm_mday = 8;
-    cout << "The start date is ¡G" <<  startDate.tm_year + 1900  << 
+    cout << "The start date is ï¼š" <<  startDate.tm_year + 1900  << 
     "/" << startDate.tm_mon + 1 << "/" << startDate.tm_mday << endl; 
     
     time_t endTime = mktime(&startDate);
     endTime += 86400 * 300;
     struct tm * endDate = localtime(&endTime);
-	cout << "The end date is ¡G" <<endDate -> tm_year + 1900<< "/" << endDate -> tm_mon + 1<< "/" << endDate -> tm_mday << endl;
+	cout << "The end date is ï¼š" <<endDate -> tm_year + 1900<< "/" << endDate -> tm_mon + 1<< "/" << endDate -> tm_mday << endl;
 	*/
 	//----------------------------------------------------------------------------------
-//	                         ºâ³Ì«áªº¤é´Á¸ò³Ì­è¶}©lªº¤é´Á®t¤F¦h¤Ö¤Ñ 
+//	                         ç®—æœ€å¾Œçš„æ—¥æœŸè·Ÿæœ€å‰›é–‹å§‹çš„æ—¥æœŸå·®äº†å¤šå°‘å¤© 
 
 
     /*
     mktime: 
-    ´£¨Ñ¤@­Ó struct tm µ²ºc¡]¥i¥H¦Û¦æ³]©w¦~¤ë¤é®É¤À¬íµ¥¡^¡A
+    æä¾›ä¸€å€‹ struct tm çµæ§‹ï¼ˆå¯ä»¥è‡ªè¡Œè¨­å®šå¹´æœˆæ—¥æ™‚åˆ†ç§’ç­‰ï¼‰ï¼Œ
 
-    mktime ·|À°§AÂà´«¦¨±q 1970¦~1¤ë1¤é 00:00:00 UTC¡]epoch¡^ ¨ì¸Ó®É¶¡ªº¬í¼Æ¡]¤]´N¬O time_t ®æ¦¡¡^¡C
+    mktime æœƒå¹«ä½ è½‰æ›æˆå¾ 1970å¹´1æœˆ1æ—¥ 00:00:00 UTCï¼ˆepochï¼‰ åˆ°è©²æ™‚é–“çš„ç§’æ•¸ï¼ˆä¹Ÿå°±æ˜¯ time_t æ ¼å¼ï¼‰ã€‚
 
-    ¨Ã¥B·|¦Û°Ê®Õ¥¿®É¶¡¡]¨Ò¦p³]©w¦¨ 13 ¤ë¥÷¤]·|¦Û°ÊÅÜ¦¨¹j¦~ 1 ¤ë¡^¡C
+    ä¸¦ä¸”æœƒè‡ªå‹•æ ¡æ­£æ™‚é–“ï¼ˆä¾‹å¦‚è¨­å®šæˆ 13 æœˆä»½ä¹Ÿæœƒè‡ªå‹•è®Šæˆéš”å¹´ 1 æœˆï¼‰ã€‚
 
 
 	*/
@@ -98,11 +98,11 @@ int main(){
     
     int days = result / 86400;
     */
-    //difftime (­pºâ®É¶¡®t) 
-//    double d = difftime(endTime,startTime);  //¦]¬° difftimeªº¨ç¦¡ªºreturn type´N¬Odouble¡A©Ò¥H³oÃä´N·|«Å§i¦¨double 
+    //difftime (è¨ˆç®—æ™‚é–“å·®) 
+//    double d = difftime(endTime,startTime);  //å› ç‚º difftimeçš„å‡½å¼çš„return typeå°±æ˜¯doubleï¼Œæ‰€ä»¥é€™é‚Šå°±æœƒå®£å‘Šæˆdouble 
 //    double days = d / 86400;
 
-    //¤]¥i¥H¼g¦¨³o¼Ë ¡õ¡õ¡õ
+    //ä¹Ÿå¯ä»¥å¯«æˆé€™æ¨£ â†“â†“â†“
     
     double days = difftime(endTime,startTime) / 86400;
     
@@ -110,5 +110,5 @@ int main(){
 	
 	
 	
-	return 0;
+    return 0;
 } 
