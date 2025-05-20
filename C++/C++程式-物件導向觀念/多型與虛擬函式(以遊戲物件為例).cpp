@@ -16,7 +16,7 @@ class Player : public GameObject{
         void update() override{
             cout << "Player 移動中..." << endl;
         }
-        void render(){
+        void render() override{
             cout << "畫出 Player 圖像" << endl;
         }
 };
