@@ -3,39 +3,39 @@
 #include <memory>
 using namespace std;
 
-//¥»class(Ãş§O)¬°©â¶HÃş§O(abstract class)
-//¥u­nÃş§O¤¤¦Ü¤Ö¥]§t¤@­Ó ¡u¯ÂµêÀÀ¨ç¦¡¡]pure virtual function¡^¡v´N¬°©â¶HÃş§O(abstract class)
+//æœ¬class(é¡åˆ¥)ç‚ºæŠ½è±¡é¡åˆ¥(abstract class)
+//åªè¦é¡åˆ¥ä¸­è‡³å°‘åŒ…å«ä¸€å€‹ ã€Œç´”è™›æ“¬å‡½å¼ï¼ˆpure virtual functionï¼‰ã€å°±ç‚ºæŠ½è±¡é¡åˆ¥(abstract class)
 class GameObject{
     public:
-        virtual void update() = 0;  //§ó·sÅŞ¿è(¯ÂµêÀÀ) 
-        virtual void render() = 0;  //Ã¸¹ÏÅŞ¿è(¯ÂµêÀÀ)
-        virtual ~GameObject() {}    //µêÀÀ«Øºc¤l(¥²­n) 
+        virtual void update() = 0;  //æ›´æ–°é‚è¼¯(ç´”è™›æ“¬) 
+        virtual void render() = 0;  //ç¹ªåœ–é‚è¼¯(ç´”è™›æ“¬)
+        virtual ~GameObject() {}    //è™›æ“¬è§£æ§‹å­(å¿…è¦) 
 };
 class Player : public GameObject{
     public:
         void update() override{
-            cout << "Player ²¾°Ê¤¤..." << endl;
+            cout << "Player ç§»å‹•ä¸­..." << endl;
         }
         void render(){
-            cout << "µe¥X Player ¹Ï¹³" << endl;
+            cout << "ç•«å‡º Player åœ–åƒ" << endl;
         }
 };
 class Enemy : public GameObject{
     public:
         void update() override{
-            cout << "Enemy°lÂÜPlayer¤¤..." << endl;
+            cout << "Enemyè¿½è¹¤Playerä¸­..." << endl;
         }
         void render() override{
-            cout << "µe¥X Enemy ¹Ï¹³" << endl;
+            cout << "ç•«å‡º Enemy åœ–åƒ" << endl;
         }
 };
 class Item : public GameObject{
     public:
         void update() override{
-            cout << "Itemµ¥«İ³Q¾ß¨ú..." << endl;
+            cout << "Itemç­‰å¾…è¢«æ’¿å–..." << endl;
         }
         void render() override{
-            cout << "µe¥X Item ¹Ï¹³" << endl;
+            cout << "ç•«å‡º Item åœ–åƒ" << endl;
         }
 };
 
