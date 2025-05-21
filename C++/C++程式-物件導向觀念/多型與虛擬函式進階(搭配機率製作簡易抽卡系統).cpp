@@ -5,48 +5,48 @@
 #include <ctime> 
 using namespace std;
 
-// °ò©³Ãş§O(©â¶H) 
+// åŸºåº•é¡åˆ¥(æŠ½è±¡) 
 class Card{
 	public:
 		virtual void showInfo() = 0;
 		virtual ~Card() {}
 };
 
-//¦UºØ¤lÃş§O(¤£¦Pµ}¦³«×) 
+//å„ç¨®å­é¡åˆ¥(ä¸åŒç¨€æœ‰åº¦) 
 class SSRCard : public Card{
 	public:
 		void showInfo() override{
-			cout << "©â¤¤SSR: ³Ì±j¨¤¦â!" << endl; 
+			cout << "æŠ½ä¸­SSR: æœ€å¼·è§’è‰²!" << endl; 
 		}
 };
 class SRCard : public Card{
 	public:
 		void showInfo() override{
-			cout << "©â¤¤SR: ¹ê¤O¨¤¦â!" << endl;
+			cout << "æŠ½ä¸­SR: å¯¦åŠ›è§’è‰²!" << endl;
 		}
 };
 class RCard : public Card{
 	public:
 		void showInfo() override{
-			cout << "©â¤¤R: ´¶³q¨¤¦â!" << endl; 
+			cout << "æŠ½ä¸­R: æ™®é€šè§’è‰²!" << endl; 
 		}
 };
  
-//©â¥dÅŞ¿è
-random_device rd;                           // ²£¥Í¦w¥şªº¶Ã¼ÆºØ¤l
-mt19937 gen(rd());							// ¥Î³o­ÓºØ¤l¨Ó«Ø¥ß¶Ã¼Æ¤ŞÀº¡]Mersenne Twister¡^
-uniform_int_distribution<> dist(1,100);		// «ü©wÀH¾÷­Èªº½d³ò
+//æŠ½å¡é‚è¼¯
+random_device rd;                           // ç”¢ç”Ÿå®‰å…¨çš„äº‚æ•¸ç¨®å­
+mt19937 gen(rd());			    // ç”¨é€™å€‹ç¨®å­ä¾†å»ºç«‹äº‚æ•¸å¼•æ“ï¼ˆMersenne Twisterï¼‰
+uniform_int_distribution<> dist(1,100);	    // æŒ‡å®šéš¨æ©Ÿå€¼çš„ç¯„åœ
 
 shared_ptr<Card> drawCard(){
 	
 	int roll = dist(gen); //1~100
 	
 	if(roll <= 5){
-		return make_shared<SSRCard>(); //5%¾÷²v 
+		return make_shared<SSRCard>();  //5%æ©Ÿç‡ 
 	}else if(roll <= 25){
-		return make_shared<SRCard>(); // 20%¾÷²v 
+		return make_shared<SRCard>();   // 20%æ©Ÿç‡ 
 	}else{
-	    return make_shared<RCard>();  // 75%¾÷²v 
+	    return make_shared<RCard>();        // 75%æ©Ÿç‡ 
 	}
 	 
 }
@@ -54,27 +54,27 @@ shared_ptr<Card> drawCard(){
 int main(){
 	int count;
 	bool b = true;
-	cout << "½Ğ¦Û­q±zªº¥ÛÀY¼Æ¶q(³Ì¤Ö¥u¯à¿é¤J150)¡G";
+	cout << "è«‹è‡ªè¨‚æ‚¨çš„çŸ³é ­æ•¸é‡(æœ€å°‘åªèƒ½è¼¸å…¥150)ï¼š";
 	cin >> count; 
 	
 	do{
-		//ÀË¬d³Ì§C¿é¤J¼Æ¶q 
+		//æª¢æŸ¥æœ€ä½è¼¸å…¥æ•¸é‡ 
 		if(count < 150){
-			cout << "½Ğ¦Û­q±zªº¥ÛÀY¼Æ¶q(³Ì§C¥u¯à¿é¤J150)¡G";
+			cout << "è«‹è‡ªè¨‚æ‚¨çš„çŸ³é ­æ•¸é‡(æœ€ä½åªèƒ½è¼¸å…¥150)ï¼š";
 			cin >> count;
 			continue; 
 		}
 		
-		//©â¥d³]©w (¤@©â -150¡B¤Q©â -1500)
+		//æŠ½å¡è¨­å®š (ä¸€æŠ½ -150ã€åæŠ½ -1500)
 		int drawTimes;
-		cout << "±zªº¥ÛÀY¼Æ¶qÁÙ³Ñ¤U¡G" << count << endl; 
-		cout << "½Ğ¿é¤J­n©â´X¦¸(³Ì¤Ö©â¤@³s©â³Ì¦h¤Q³s©â)¡G";
+		cout << "æ‚¨çš„çŸ³é ­æ•¸é‡é‚„å‰©ä¸‹ï¼š" << count << endl; 
+		cout << "è«‹è¼¸å…¥è¦æŠ½å¹¾æ¬¡(æœ€å°‘æŠ½ä¸€é€£æŠ½æœ€å¤šåé€£æŠ½)ï¼š";
 		cin >> drawTimes;
 		
 		vector<shared_ptr<Card>> result;
 		if(drawTimes == 1 || drawTimes == 10){
 			if(count < 1500 && drawTimes == 10){
-				cout << "¥ÛÀY¼Æ§C©ó1500µLªk©â¨ú¤Q³s©â!!!" << endl; 
+				cout << "çŸ³é ­æ•¸ä½æ–¼1500ç„¡æ³•æŠ½å–åé€£æŠ½!!!" << endl; 
 				continue;
 			}
 			for(int i = 0; i < drawTimes; i++){
@@ -83,19 +83,19 @@ int main(){
 			}
 			
 		}else{
-			cout << "³Ì¦h¤Q³s©â³Ì¤Ö¤@³s©â!!!" << endl; 
+			cout << "æœ€å¤šåé€£æŠ½æœ€å°‘ä¸€é€£æŠ½!!!" << endl; 
 			continue;	
 		}
 		
-		//©â¥dµ²ªG 
-		cout << "======©â¥dµ²ªG=======" << endl;
+		//æŠ½å¡çµæœ 
+		cout << "======æŠ½å¡çµæœ=======" << endl;
 		for(auto & card: result){
 			card->showInfo();
 		}
-		//ÀË¬d¥ÛÀY¼Æ¶q¬O§_§C©ó150¡A¦pªG§C©ó150µ²§ôµ{¦¡ 
+		//æª¢æŸ¥çŸ³é ­æ•¸é‡æ˜¯å¦ä½æ–¼150ï¼Œå¦‚æœä½æ–¼150çµæŸç¨‹å¼ 
 		if(count < 150){
-			cout << "±zªº¥ÛÀY¼Æ¶qÁÙ³Ñ¤U¡G"<< count << " (¥ÛÀY¼Æ¶q¤£¨¬)" << endl;
-			cout << "==========©â¥dµ{¦¡µ²§ô!!!===========" << endl; 
+			cout << "æ‚¨çš„çŸ³é ­æ•¸é‡é‚„å‰©ä¸‹ï¼š"<< count << " (çŸ³é ­æ•¸é‡ä¸è¶³)" << endl;
+			cout << "==========æŠ½å¡ç¨‹å¼çµæŸ!!!===========" << endl; 
 		    b = false;
 		}
 	}while(b);
