@@ -5,56 +5,57 @@
 #include <ctime> 
 using namespace std;
 
-// åŸºåº•é¡åˆ¥(æŠ½è±¡) 
+// °ò©³Ãş§O(©â¶H) 
 class Card{
 	public:
-	   virtual void showInfo() = 0;
-	   virtual ~Card() {}
+		virtual void showInfo() = 0;
+		virtual ~Card() {}
 };
 
-//å„ç¨®å­é¡åˆ¥(ä¸åŒç¨€æœ‰åº¦) 
+//¦UºØ¤lÃş§O(¤£¦Pµ}¦³«×) 
 class SSRCard : public Card{
 	public:
-	   void showInfo() override{
-		   cout << "æŠ½ä¸­SSR: æœ€å¼·è§’è‰²!" << endl; 
-	   }
+		void showInfo() override{
+			cout << "©â¤¤SSR: ³Ì±j¨¤¦â!" << endl; 
+		}
 };
 class SRCard : public Card{
 	public:
-	   void showInfo() override{
-		   cout << "æŠ½ä¸­SR: å¯¦åŠ›è§’è‰²!" << endl;
-	   }
+		void showInfo() override{
+			cout << "©â¤¤SR: ¹ê¤O¨¤¦â!" << endl;
+		}
 };
 class RCard : public Card{
 	public:
-	   void showInfo() override{
-		   cout << "æŠ½ä¸­R: æ™®é€šè§’è‰²!" << endl; 
-	   }
+		void showInfo() override{
+			cout << "©â¤¤R: ´¶³q¨¤¦â!" << endl; 
+		}
 };
  
-//æŠ½å¡é‚è¼¯
-random_device rd;
-mt19937 gen(rd());
-uniform_int_distribution<> dist(1,100);
+//©â¥dÅŞ¿è
+random_device rd;                           // ²£¥Í¦w¥şªº¶Ã¼ÆºØ¤l
+mt19937 gen(rd());							// ¥Î³o­ÓºØ¤l¨Ó«Ø¥ß¶Ã¼Æ¤ŞÀº¡]Mersenne Twister¡^
+uniform_int_distribution<> dist(1,100);		// «ü©wÀH¾÷­Èªº½d³ò
 
 shared_ptr<Card> drawCard(){
+	
 	int roll = dist(gen); //1~100
 	
 	if(roll <= 5){
-		return make_shared<SSRCard>(); //5%æ©Ÿç‡ 
+		return make_shared<SSRCard>(); //5%¾÷²v 
 	}else if(roll <= 25){
-		return make_shared<SRCard>(); // 20%æ©Ÿç‡ 
+		return make_shared<SRCard>(); // 20%¾÷²v 
 	}else{
-	    return make_shared<RCard>();  // 75%æ©Ÿç‡ 
+	    return make_shared<RCard>();  // 75%¾÷²v 
 	}
 	 
 }
  
 int main(){
-	//ç‚ºäº†è¦è®“ä»–å¯ä»¥å¾ªç’°åŸ·è¡Œæ‰€ä»¥é€™é‚ŠåŠ å…¥äº†doè¿´åœˆ 
+	//¬°¤F­nÅı¥L¥i¥H´`Àô°õ¦æ©Ò¥H³oÃä¥[¤J¤Fdo°j°é 
 	do{
 		int drawTimes;
-		cout << "è«‹è¼¸å…¥è¦æŠ½å¹¾æ¬¡ï¼š";
+		cout << "½Ğ¿é¤J­n©â´X¦¸¡G";
 		cin >> drawTimes;
 		
 		vector<shared_ptr<Card>> result;
@@ -63,7 +64,7 @@ int main(){
 			result.emplace_back(drawCard());
 		}
 		
-		cout << "======æŠ½å¡çµæœ=======" << endl;
+		cout << "======©â¥dµ²ªG=======" << endl;
 		for(auto & card: result){
 			card->showInfo();
 		}
